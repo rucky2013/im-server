@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans.xsd        http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="im-server" />
+
+    <dubbo:registry id="imRegistry" protocol="zookeeper" address="192.168.110.110:2181"
+                    group="/dubbo/im-server" />
+
+    <dubbo:protocol name="dubbo" port="10010" />
+
+
+   <!-- 声明需要暴露的服务接口 -->
+    <dubbo:service interface="com.zhuanglide.core.service.IMService"
+                   registry="imRegistry"
+                   ref="imService" version="1.0.0" />
+    <bean id="imService" class="com.zhuanglide.im.service.IMServiceImpl">
+        <property name="brokerService" ref="brokerService"/>
+        <property name="cacheService" ref="cacheService"/>
+    </bean>
+</beans>

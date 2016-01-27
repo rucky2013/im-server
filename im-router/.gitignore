@@ -1,0 +1,15 @@
+/target
+/classes
+/.settings
+/.metadata
+.settings
+.swp
+.classpath
+.project
+.springBeans
+*.iml
+.idea
+logs
+*.tmp
+*.log
+*.bak

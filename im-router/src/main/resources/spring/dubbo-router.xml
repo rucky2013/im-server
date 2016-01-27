@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+					 http://www.springframework.org/schema/beans/spring-beans.xsd
+					 http://www.springframework.org/schema/context
+					 http://www.springframework.org/schema/context/spring-context.xsd
+					 http://code.alibabatech.com/schema/dubbo
+					 http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:registry id="brokerRegistry" protocol="zookeeper" address="192.168.110.110:2181"
+                    group="/dubbo/im-broker" />
+    <dubbo:reference id="brokerService"
+                     registry="brokerRegistry"
+                     interface="com.zhuanglide.core.service.BrokerService"
+                     loadbalance="cid"
+                     version="1.0.0" check="false"/>
+</beans>
