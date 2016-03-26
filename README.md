@@ -1,5 +1,10 @@
-im-server
-im-service 业务处理
-im-router  路由，负责service -> broker
-im-borker  长连接
-im-core		
+---
+title: im 框架,proxy_netty 分支
+tags: IM,netyy
+---
+# 主要修改
+通过==router==来连接==broker==和==service==之间的通信
+
+## router
+## 其他文档先等等写
+
